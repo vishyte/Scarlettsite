@@ -101,6 +101,29 @@ export function EventDetails() {
             </div>
           </div>
 
+          {/* Dress Code */}
+          <div className="bg-gradient-to-br from-purple-100 to-pink-100 rounded-lg shadow-lg p-6 sm:p-8">
+            <h2 className="text-2xl text-purple-800 mb-4" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
+              Dress Code
+            </h2>
+            <div className="space-y-4">
+              <p className="text-gray-700" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
+                Ninong and Ninang should wear these pastel dress colors:
+              </p>
+              <div className="flex flex-wrap gap-3 mb-3">
+                {['#B19CD7', '#C0AFE2', '#CEC2EB', '#DDD5F3', '#EBE8FC'].map((color) => (
+                  <div key={color} className="w-16 h-16 rounded-lg shadow-sm" style={{ backgroundColor: color, border: '1px solid rgba(0,0,0,0.08)' }} />
+                ))}
+              </div>
+              <p className="text-gray-700" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
+                Guests are welcome to wear any pastel color.
+              </p>
+              <p className="text-gray-700" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
+                Please refrain from wearing any shade of pink.
+              </p>
+            </div>
+          </div>
+
           {/* Contact Information */}
           <div className="bg-white rounded-lg shadow-lg p-6 sm:p-8">
             <h2 className="text-2xl text-purple-800 mb-6" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
@@ -118,16 +141,6 @@ export function EventDetails() {
                 <p className="text-gray-700">Please RSVP by June 7, 2026</p>
               </div>
             </div>
-          </div>
-
-          {/* Dress Code */}
-          <div className="bg-gradient-to-br from-purple-100 to-pink-100 rounded-lg shadow-lg p-6 sm:p-8">
-            <h2 className="text-2xl text-purple-800 mb-4" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
-              Dress Code
-            </h2>
-            <p className="text-gray-700" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
-              Semi-formal attire suggested. Please dress comfortably for a morning ceremony.
-            </p>
           </div>
         </div>
       </div>
