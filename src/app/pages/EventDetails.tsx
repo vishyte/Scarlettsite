@@ -76,10 +76,10 @@ export function EventDetails() {
                   <div className="flex items-start gap-3">
                     <MapPin className="w-5 h-5 text-pink-400 mt-0.5" />
                     <div>
-                      <p className="text-gray-900">DeLastResort</p>
-                      <p className="text-sm text-gray-600">Block 1, Lot 17, Phase 2</p>
-                      <p className="text-sm text-gray-600">Davao Gulf Boulevard Street</p>
-                      <p className="text-sm text-gray-600">Gulfview Subdivision</p>
+                      <p className="text-gray-900">AvenYou</p>
+                      <p className="text-sm text-gray-600">Along Matina Aplaya Road</p>
+                      <p className="text-sm text-gray-600">(in front of Duke Spa / Queensland)</p>
+                      <p className="text-sm text-gray-600">Davao City, Philippines 8000</p>
                     </div>
                   </div>
 

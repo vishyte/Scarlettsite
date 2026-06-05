@@ -13,11 +13,35 @@ export function RSVP() {
   });
 
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
-    console.log('RSVP Submitted:', formData);
+    setSending(true);
+    setError(null);
+
+    try {
+      const response = await fetch('/api/rsvp', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        const message = data?.detail ? `${data?.error} (${data.detail})` : data?.error || 'Unable to send RSVP.';
+        throw new Error(message);
+      }
+
+      setSubmitted(true);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Something went wrong.');
+    } finally {
+      setSending(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -191,11 +215,17 @@ export function RSVP() {
             </div>
 
             {/* Submit Button */}
+            {error && (
+              <p className="text-sm text-red-600 mb-4" role="alert">
+                {error}
+              </p>
+            )}
             <button
               type="submit"
-              className="w-full py-4 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-lg hover:from-purple-600 hover:to-pink-600 transition-all shadow-lg hover:shadow-xl"
+              disabled={sending}
+              className="w-full py-4 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-lg hover:from-purple-600 hover:to-pink-600 transition-all shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              Submit RSVP
+              {sending ? 'Sending...' : 'Submit RSVP'}
             </button>
           </div>
         </form>
