@@ -11,9 +11,11 @@ Run `npm run dev` to start the development server.
 
 ## GitHub Pages deployment
 
-This project is configured to deploy to GitHub Pages from the `main` branch using GitHub Actions.
+This project is configured to deploy to GitHub Pages from the `gh-pages` branch using GitHub Actions.
 
-The workflow uses `actions/configure-pages@v4` with automatic enablement. That requires a repository secret named `PAGES_TOKEN` containing a GitHub personal access token with `repo` scope and Pages write permission.
+The workflow builds the site and publishes `./dist` to the `gh-pages` branch via `peaceiris/actions-gh-pages@v4`.
+
+No extra repository secrets are required for deployment; the action uses `GITHUB_TOKEN`.
 
 After pushing to GitHub, the workflow at `.github/workflows/pages.yml` will build and deploy the `dist` folder.
   
